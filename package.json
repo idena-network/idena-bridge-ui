@@ -1,0 +1,27 @@
+{
+    "title": "Idena Bridge UI",
+    "name": "idena-bridge-ui",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "description": "a basic eth-idena bridge ui",
+    "keywords": [
+        "css",
+        "sass",
+        "html",
+        "responsive",
+        "theme",
+        "template"
+    ],
+    "license": "MIT",
+    "author": "RealMahmoud",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/StartBootstrap/startbootstrap-bare.git"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "serve-handler": "^6.1.3"
+    }
+}

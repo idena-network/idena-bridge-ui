@@ -1,0 +1,31 @@
+.headerLeft {
+  font-family: Nunito !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  color: #212D5E !important;
+}
+
+.theme-color-1 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: #212d5e !important;
+}
+
+.swap-line::after {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  background: linear-gradient(269.98deg, #69fabc -0.02%, #00ade8 100%);
+}
+
+.nunito {
+  font-family: Nunito;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
