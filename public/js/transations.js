@@ -17,9 +17,9 @@ function fetchData() {
                     newEntry += `<td><span class="badge bg-danger">Fail</span></td>`;
                 }
                 if (element.type == 0) {
-                    newEntry += '<td> <img src="/images/idena.webp" style="height:20px;" class="mb-1 mr-2 ml-2"> <i class="fas fa-angle-right"> </i> <img src="/images/eth.svg" style="height:20px;" class="mb-1 mr-2 ml-2"></td>';
+                    newEntry += '<td> <img src="/images/idena.webp" style="height:20px;" class="mb-1 mr-2 ml-2"> <i class="fas fa-angle-right"> </i> <img src="/images/bsc.svg" style="height:20px;" class="mb-1 mr-2 ml-2"></td>';
                 } else {
-                    newEntry += '<td><img src="/images/eth.svg" style="height:20px;" class="mb-1 mr-2 ml-2"> <i class="fas fa-angle-right"></i> <img src="/images/idena.webp" style="height:20px;" class="mb-1 mr-2 ml-2"></td>';
+                    newEntry += '<td><img src="/images/bsc.svg" style="height:20px;" class="mb-1 mr-2 ml-2"> <i class="fas fa-angle-right"></i> <img src="/images/idena.webp" style="height:20px;" class="mb-1 mr-2 ml-2"></td>';
                 }
                 newEntry += `<td>${element.address}</td>`;
                 newEntry += `<td>${element.amount}</td>`;

@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 var path = require('path');
-const port = 3001
+const port = 3000
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/index.html'));

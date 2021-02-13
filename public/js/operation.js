@@ -22,28 +22,28 @@ function fetchData() {
             document.getElementById("card-amount").innerHTML = response.data.result.amount;
 
             if (response.data.result.fees) {
-                document.getElementById("card-fees").innerHTML = (parseFloat(response.data.result.fees)).toFixed(2);
+                document.getElementById("card-fees").innerHTML = '~ ' + (parseFloat(response.data.result.fees)).toFixed(3) + " iDNA";
             } else {
                 if (response.data.result.type == 0) {
-                    document.getElementById("card-fees").innerHTML = global_variables.IDENA_FEE + " iDNA";
+                    document.getElementById("card-fees").innerHTML = '~ ' + parseFloat(global_variables.IDENA_FEE).toFixed(3) + " iDNA";
                 } else {
-                    document.getElementById("card-fees").innerHTML = "<a href='#'onclick='calculateETHFees();'>Calculate</a>";
+                    document.getElementById("card-fees").innerHTML = "<a href='#'onclick='calculateBSCFees();'>Calculate</a>";
                 }
             }
 
             document.getElementById("card-time").innerHTML = moment(response.data.result.time).local().format('YYYY.MM.DD hh:mm:ss A');
             if (response.data.result.address && response.data.result.type == 0) {
                 document.getElementById("card-to").innerHTML = response.data.result.address.substring(0, 10) + "...." + response.data.result.address.substring(32, 42);
-                document.getElementById("card-to").href = global_variables.ETH_EXPLORER + "/address/" + response.data.result.address;
+                document.getElementById("card-to").href = global_variables.BSC_EXPLORER + "/address/" + response.data.result.address;
             } else {
                 document.getElementById("card-to").innerHTML = response.data.result.address.substring(0, 10) + "...." + response.data.result.address.substring(32, 42);
                 document.getElementById("card-to").href = "https://scan.idena.io/address/" + response.data.result.address;
             }
             document.getElementById("card-uuid").innerHTML = response.data.result.uuid;
             if (response.data.result.type == 0) {
-                document.getElementById("card-type").innerHTML = 'IDENA <i class="fas fa-angle-double-right"></i> ETH';
+                document.getElementById("card-type").innerHTML = 'IDENA <i class="fas fa-angle-double-right"></i> BSC';
                 document.getElementById("step1-title").innerHTML = "1. Send the required amount to the bridge's wallet";
-                document.getElementById("step2-title").innerHTML = "2. The bridge will mint tokens for your ETH address";
+                document.getElementById("step2-title").innerHTML = "2. The bridge will mint tokens for your BSC address";
                 document.getElementById("action-button").onclick = openIdenaApp;
                 document.getElementById("action-button").innerHTML = "Open Idena App";
                 if (response.data.result.idena_tx) {
@@ -62,8 +62,8 @@ function fetchData() {
                     document.getElementById("step1-bottom").innerHTML = "";
                     document.getElementById("step1-status").innerHTML = '<span class="text-danger">Not Paid</span>';
                 }
-                if (response.data.result.eth_tx) {
-                    document.getElementById("step2-bottom").innerHTML = `TxHash : <a href=${global_variables.ETH_EXPLORER + "/tx/" + response.data.result.eth_tx}">${response.data.result.eth_tx.substring(0, 10)}...${response.data.result.eth_tx.substring(30, 42)}</a>`;
+                if (response.data.result.bsc_tx) {
+                    document.getElementById("step2-bottom").innerHTML = `TxHash : <a href="${global_variables.BSC_EXPLORER + "/tx/" + response.data.result.bsc_tx}">${response.data.result.bsc_tx.substring(0, 10)}...${response.data.result.bsc_tx.substring(30, 42)}</a>`;
                     document.getElementById("step2-status").innerHTML = '<span class="text-success">Sent</span>';
 
                 } else {
@@ -71,13 +71,13 @@ function fetchData() {
                     document.getElementById("step2-status").innerHTML = '<span class="text-warning">Pending</span>';
                 }
             } else {
-                document.getElementById("card-type").innerHTML = 'ETH <i class="fas fa-angle-double-right"></i> IDENA';
+                document.getElementById("card-type").innerHTML = 'BSC <i class="fas fa-angle-double-right"></i> IDENA';
                 document.getElementById("step1-title").innerHTML = "1. Burn your tokens";
                 document.getElementById("step2-title").innerHTML = "2. Native idena will be sent to your wallet";
                 document.getElementById("action-button").onclick = openMetamask;
                 document.getElementById("action-button").innerHTML = "Open Meta Mask";
-                if (response.data.result.eth_tx) {
-                    document.getElementById("step1-bottom").innerHTML = `TxHash : <a href=${global_variables.ETH_EXPLORER + "/tx/"+ response.data.result.eth_tx}">${response.data.result.eth_tx.substring(0, 10)}...${response.data.result.eth_tx.substring(30, 42)}</a>`;
+                if (response.data.result.bsc_tx) {
+                    document.getElementById("step1-bottom").innerHTML = `TxHash : <a href="${global_variables.BSC_EXPLORER + "/tx/"+ response.data.result.bsc_tx}">${response.data.result.bsc_tx.substring(0, 10)}...${response.data.result.bsc_tx.substring(30, 42)}</a>`;
                     if (response.data.result.mined == 0) {
                         document.getElementById("step1-status").innerHTML = '<span class="text-warning">Mining</span>';
                     } else if (response.data.result.mined == 1) {
@@ -127,25 +127,25 @@ function openIdenaApp() {
     window.open(url, '_blank');
 
 }
-async function calculateETHFees() {
+async function calculateBSCFees() {
     try {
         var web3API = new Web3(window.ethereum);
-        contract = new web3API.eth.Contract(contractABI, global_variables.ETH_CONTRACT);
+        contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
         let contractFees = await contract.methods.burn(web3API.utils.toWei(window.amount.toString())).estimateGas({
             from: window.address
         });
         let gasPrice = await web3API.eth.getGasPrice();
         let idenaPrice = web3API.utils.toWei(await getIdenaPrice());
         let fees = (gasPrice * contractFees / idenaPrice);
-        document.getElementById("card-fees").innerHTML = '~' + (parseFloat(global_variables.ETH_FEE) + parseFloat(fees)).toFixed(3) + " iDNA" || "-";
+        document.getElementById("card-fees").innerHTML = '~' + (parseFloat(global_variables.BSC_FEE) + parseFloat(fees)).toFixed(3) + " iDNA" || "-";
     } catch (error) {
         document.getElementById("card-fees").innerHTML = "Error";
     }
 }
 async function getIdenaPrice() {
-    let resp = await axios.get("https://api.coingecko.com/api/v3/simple/price?ids=idena&vs_currencies=eth");
-    if (resp.status == 200 && resp.data.idena.eth) {
-        return resp.data.idena.eth.toString();
+    let resp = await axios.get("https://api.coingecko.com/api/v3/simple/price?ids=idena&vs_currencies=bnb");
+    if (resp.status == 200 && resp.data.idena.bnb) {
+        return resp.data.idena.bnb.toString();
     } else {
         return 0
     }
@@ -154,13 +154,13 @@ async function openMetamask() {
     if (window.ethereum) {
         try {
             toastr.success("Openning Metamask");
-            ethereum.enable();
+            await ethereum.enable();
             let web3API = new Web3(window.ethereum);
-            contract = new web3API.eth.Contract(contractABI, global_variables.ETH_CONTRACT);
+            contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
             contract.methods.burn(web3API.utils.toWei(window.amount.toString())).send({
                 from: await web3API.eth.getCoinbase()
-            }, function (err, result) {
-                if (result) {
+            }, async function (err, result) {
+                if (await result) {
                     console.log(result);
                     toastr.success("Submitting Tx");
                     axios.post(global_variables.API_URL + '/swaps/assign', {
@@ -168,7 +168,7 @@ async function openMetamask() {
                             tx: result
                         })
                         .then(function (response) {
-                            if (response.data.status == 200) {
+                            if (response.status == 200) {
                                 location.reload();
                             } else {
                                 toastr.error("Something went wrong.");
@@ -177,7 +177,7 @@ async function openMetamask() {
                             toastr.error("Something went wrong.");
                         });
                 } else {
-                    toastr.error("Error");
+                    toastr.error(err);
                 }
 
             });
