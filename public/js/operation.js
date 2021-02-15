@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function fetchData() {
     axios.get(global_variables.API_URL + '/swaps/info/' + getLastItem(window.location.pathname))
         .then(function (response) {
-            window.amount = response.data.result.amount;
+            window.amount = parseFloat(response.data.result.amount).toFixed(8);
             window.uuid = response.data.result.uuid;
             window.address = response.data.result.address;
             if (response.data.result.status == "Success") {
@@ -19,15 +19,16 @@ function fetchData() {
             } else {
                 document.getElementById("card-status").innerHTML = '<i class="fas fa-exclamation-triangle display-5 text-danger"></i>' + '<p>Unkhown state</p>';
             }
-            document.getElementById("card-amount").innerHTML = response.data.result.amount;
+            document.getElementById("card-amount").innerHTML = parseFloat(response.data.result.amount).toFixed(8);
 
             if (response.data.result.fees) {
                 document.getElementById("card-fees").innerHTML = '~ ' + (parseFloat(response.data.result.fees)).toFixed(3) + " iDNA";
             } else {
                 if (response.data.result.type == 0) {
-                    document.getElementById("card-fees").innerHTML = '~ ' + parseFloat(global_variables.IDENA_FEE).toFixed(3) + " iDNA";
-                } else {
                     document.getElementById("card-fees").innerHTML = "<a href='#'onclick='calculateBSCFees();'>Calculate</a>";
+                } else {
+                    document.getElementById("card-fees").innerHTML = '~ ' + parseFloat(global_variables.IDENA_FIXED_FEES).toFixed(3) + " iDNA";
+
                 }
             }
 
@@ -137,7 +138,7 @@ async function calculateBSCFees() {
         let gasPrice = await web3API.eth.getGasPrice();
         let idenaPrice = web3API.utils.toWei(await getIdenaPrice());
         let fees = (gasPrice * contractFees / idenaPrice);
-        document.getElementById("card-fees").innerHTML = '~' + (parseFloat(global_variables.BSC_FEE) + parseFloat(fees)).toFixed(3) + " iDNA" || "-";
+        document.getElementById("card-fees").innerHTML = '~' + (parseFloat(fees) * (parseFloat(global_variables.BSC_FEES) / 100)).toFixed(3) + " iDNA" || "-";
     } catch (error) {
         document.getElementById("card-fees").innerHTML = "Error";
     }

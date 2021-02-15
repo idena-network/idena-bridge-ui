@@ -40,6 +40,6 @@ function createSwap() {
         });
 }
 
-function setTwoNumberDecimal(event) {
-    this.value = parseFloat(this.value).toFixed(2);
+function setNumberDecimal(event) {
+    this.value = parseFloat(this.value).toFixed(8);
 }
