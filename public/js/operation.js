@@ -38,7 +38,7 @@ function fetchData() {
                 document.getElementById("card-to").href = global_variables.BSC_EXPLORER + "/address/" + response.data.result.address;
             } else {
                 document.getElementById("card-to").innerHTML = response.data.result.address.substring(0, 10) + "...." + response.data.result.address.substring(32, 42);
-                document.getElementById("card-to").href = "https://scan.idena.io/address/" + response.data.result.address;
+                document.getElementById("card-to").href = global_variables.IDENA_EXPLORER + "/address/" + response.data.result.address;
             }
             document.getElementById("card-uuid").innerHTML = response.data.result.uuid;
             if (response.data.result.type == 0) {
@@ -48,7 +48,7 @@ function fetchData() {
                 document.getElementById("action-button").onclick = openIdenaApp;
                 document.getElementById("action-button").innerHTML = "Open Idena App";
                 if (response.data.result.idena_tx) {
-                    document.getElementById("step1-bottom").innerHTML = `TxHash : <a href="https://scan.idena.io/transaction/${response.data.result.idena_tx}">${response.data.result.idena_tx.substring(0, 10)}...${response.data.result.idena_tx.substring(30, 42)}</a>`;
+                    document.getElementById("step1-bottom").innerHTML = `TxHash : <a href="${global_variables.IDENA_EXPLORER + "/transaction/" + response.data.result.idena_tx}">${response.data.result.idena_tx.substring(0, 10)}...${response.data.result.idena_tx.substring(30, 42)}</a>`;
                     if (response.data.result.mined == 0) {
                         document.getElementById("step1-status").innerHTML = '<span class="text-warning">Mining</span>';
                     } else if (response.data.result.mined == 1) {
@@ -94,7 +94,7 @@ function fetchData() {
                     document.getElementById("step1-status").innerHTML = '<span class="text-warning">Pending</span>';
                 }
                 if (response.data.result.idena_tx) {
-                    document.getElementById("step2-bottom").innerHTML = `TxHash : <a href="https://scan.idena.io/transaction/${response.data.result.idena_tx}">${response.data.result.idena_tx.substring(0, 10)}...${response.data.result.idena_tx.substring(30, 42)}</a>`;
+                    document.getElementById("step2-bottom").innerHTML = `TxHash : <a href="${global_variables.IDENA_EXPLORER + "/transaction/"+response.data.result.idena_tx}">${response.data.result.idena_tx.substring(0, 10)}...${response.data.result.idena_tx.substring(30, 42)}</a>`;
                     document.getElementById("step2-status").innerHTML = '<span class="text-success">Sent</span>';
                 } else {
                     document.getElementById("step2-bottom").innerHTML = "";

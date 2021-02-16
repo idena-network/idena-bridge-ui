@@ -15,7 +15,8 @@ toastr.options = {
 
 var global_variables = {
     "API_URL": "http://localhost:8000",
-    "BSC_EXPLORER": "https://testnet.bscscan.com/",
+    "BSC_EXPLORER": "https://testnet.bscscan.com",
+    "IDENA_EXPLORER": "https://scan.idena.io",
     "MIN_SWAP": 10,
     "BSC_FEES": 150,
     "IDENA_FIXED_FEES": 1,
