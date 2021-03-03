@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function fetchData() {
     var newEntry
-    axios.get(global_variables.API_URL + '/swaps/latest')
+    axios.get('/api/latest')
         .then(function (response) {
             response.data.result.forEach(element => {
                 newEntry = "";
