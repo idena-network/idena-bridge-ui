@@ -1,0 +1,6 @@
+{
+    "routes": [
+        { "src": "/operation/(.*)", "dest": "/operation.html" },
+        { "src": "/transations", "dest": "/transations.html" }
+    ]
+}
