@@ -17,7 +17,7 @@ var global_variables = {
     "API_URL": "http://localhost:8000",
     "BSC_EXPLORER": "https://bscscan.com",
     "IDENA_EXPLORER": "https://scan.idena.io",
-    "MIN_SWAP": 100,
+    "MIN_SWAP": 2,
     "BSC_FEES": 150,
     "IDENA_FIXED_FEES": 1,
     "BSC_CONTRACT": "0x0De08C1AbE5fB86Dd7FD2ac90400AcE305138d5B",
