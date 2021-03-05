@@ -142,6 +142,7 @@ async function calculateBSCFees() {
         document.getElementById("card-fees").innerHTML = '~' + (parseFloat(fees) * (parseFloat(global_variables.BSC_FEES) / 100)).toFixed(3) + " iDNA" || "-";
     } catch (error) {
         document.getElementById("card-fees").innerHTML = "Error";
+        console.error(error);
     }
 }
 async function getIdenaPrice() {
