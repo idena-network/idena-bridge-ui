@@ -6,8 +6,8 @@ const port = 3000
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
-app.get("/transations", function (req, res) {
-  res.sendFile(path.join(__dirname + '/public/transations.html'));
+app.get("/transactions", function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/transactions.html'));
 });
 
 app.get("/operation/:uuid", function (req, res) {

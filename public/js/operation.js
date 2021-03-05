@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function fetchData() {
-    axios.get(global_variables.API_URL + '/swaps/info/' + getLastItem(window.location.pathname))
+    axios.get('/api/info/' + getLastItem(window.location.pathname))
         .then(function (response) {
             window.amount = parseFloat(response.data.result.amount).toFixed(8);
             window.uuid = response.data.result.uuid;
@@ -108,7 +108,7 @@ function fetchData() {
 }
 
 function submitTx() {
-    axios.post(global_variables.API_URL + '/swaps/assign', {
+    axios.post('/api/assign', {
             uuid: window.uuid,
             tx: document.getElementById("modal-tx").value
         })
@@ -123,7 +123,8 @@ function openIdenaApp() {
     toastr.success("Openning Idena app");
     let address = global_variables.IDENA_WALLET;
     let amount = window.amount;
-    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=IDENA-TO-THE-MOON`
+    let bscAddress = window.address;
+    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}`
     console.log(url);
     window.open(url, '_blank');
 
@@ -132,7 +133,7 @@ async function calculateBSCFees() {
     try {
         var web3API = new Web3(window.ethereum);
         contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
-        let contractFees = await contract.methods.burn(web3API.utils.toWei(window.amount.toString())).estimateGas({
+        let contractFees = await contract.methods.customBurn(web3API.utils.toWei(window.amount.toString()), window.address).estimateGas({
             from: window.address
         });
         let gasPrice = await web3API.eth.getGasPrice();
@@ -141,6 +142,7 @@ async function calculateBSCFees() {
         document.getElementById("card-fees").innerHTML = '~' + (parseFloat(fees) * (parseFloat(global_variables.BSC_FEES) / 100)).toFixed(3) + " iDNA" || "-";
     } catch (error) {
         document.getElementById("card-fees").innerHTML = "Error";
+        console.error(error);
     }
 }
 async function getIdenaPrice() {
@@ -158,13 +160,13 @@ async function openMetamask() {
             await ethereum.enable();
             let web3API = new Web3(window.ethereum);
             contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
-            contract.methods.burn(web3API.utils.toWei(window.amount.toString())).send({
+            contract.methods.customBurn(web3API.utils.toWei(window.amount.toString()), window.address).send({
                 from: await web3API.eth.getCoinbase()
             }, async function (err, result) {
                 if (await result) {
                     console.log(result);
                     toastr.success("Submitting Tx");
-                    axios.post(global_variables.API_URL + '/swaps/assign', {
+                    axios.post('/api/assign', {
                             uuid: window.uuid,
                             tx: result
                         })
