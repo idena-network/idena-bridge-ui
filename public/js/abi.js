@@ -268,9 +268,14 @@ const contractABI = [
 				"internalType": "uint256",
 				"name": "amount",
 				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "destination",
+				"type": "address"
 			}
 		],
-		"name": "burn",
+		"name": "customBurn",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

@@ -123,7 +123,8 @@ function openIdenaApp() {
     toastr.success("Openning Idena app");
     let address = global_variables.IDENA_WALLET;
     let amount = window.amount;
-    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=IDENA-TO-THE-MOON`
+    let bscAddress = window.address;
+    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}`
     console.log(url);
     window.open(url, '_blank');
 
@@ -132,7 +133,7 @@ async function calculateBSCFees() {
     try {
         var web3API = new Web3(window.ethereum);
         contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
-        let contractFees = await contract.methods.burn(web3API.utils.toWei(window.amount.toString())).estimateGas({
+        let contractFees = await contract.methods.customBurn(web3API.utils.toWei(window.amount.toString()), window.address).estimateGas({
             from: window.address
         });
         let gasPrice = await web3API.eth.getGasPrice();
@@ -158,7 +159,7 @@ async function openMetamask() {
             await ethereum.enable();
             let web3API = new Web3(window.ethereum);
             contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
-            contract.methods.burn(web3API.utils.toWei(window.amount.toString())).send({
+            contract.methods.customBurn(web3API.utils.toWei(window.amount.toString()), window.address).send({
                 from: await web3API.eth.getCoinbase()
             }, async function (err, result) {
                 if (await result) {
