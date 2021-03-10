@@ -15,11 +15,11 @@ toastr.options = {
 
 var global_variables = {
     "API_URL": "http://localhost:8000",
-    "BSC_EXPLORER": "https://testnet.bscscan.com",
+    "BSC_EXPLORER": "https://bscscan.com",
     "IDENA_EXPLORER": "https://scan.idena.io",
-    "MIN_SWAP": 10,
+    "MIN_SWAP": 100,
     "BSC_FEES": 150,
     "IDENA_FIXED_FEES": 1,
-    "BSC_CONTRACT": "0x6a719bcbDCCcCe1459C48f34E769A3c43C5B9415",
-    "IDENA_WALLET": "0xf2bb83e71f9338d634eb4590a070494455e22a81"
+    "BSC_CONTRACT": "0x0De08C1AbE5fB86Dd7FD2ac90400AcE305138d5B",
+    "IDENA_WALLET": "0x98D16d7021930b788135dD834983394fF2De9869"
 };

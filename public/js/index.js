@@ -19,7 +19,7 @@ function createSwap() {
         toastr.error(`Min swap is ${global_variables.MIN_SWAP} iDNAs`);
         return
     }
-    axios.post(global_variables.API_URL + '/swaps/create', {
+    axios.post('/api/create', {
             type: parseInt(document.getElementById("form-type").value),
             amount: parseFloat(document.getElementById("form-amount").value),
             address: document.getElementById("form-to").value

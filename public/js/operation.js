@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function fetchData() {
-    axios.get(global_variables.API_URL + '/swaps/info/' + getLastItem(window.location.pathname))
+    axios.get('/api/info/' + getLastItem(window.location.pathname))
         .then(function (response) {
             window.amount = parseFloat(response.data.result.amount).toFixed(8);
             window.uuid = response.data.result.uuid;
@@ -108,7 +108,7 @@ function fetchData() {
 }
 
 function submitTx() {
-    axios.post(global_variables.API_URL + '/swaps/assign', {
+    axios.post('/api/assign', {
             uuid: window.uuid,
             tx: document.getElementById("modal-tx").value
         })
@@ -142,6 +142,7 @@ async function calculateBSCFees() {
         document.getElementById("card-fees").innerHTML = '~' + (parseFloat(fees) * (parseFloat(global_variables.BSC_FEES) / 100)).toFixed(3) + " iDNA" || "-";
     } catch (error) {
         document.getElementById("card-fees").innerHTML = "Error";
+        console.error(error);
     }
 }
 async function getIdenaPrice() {
@@ -165,7 +166,7 @@ async function openMetamask() {
                 if (await result) {
                     console.log(result);
                     toastr.success("Submitting Tx");
-                    axios.post(global_variables.API_URL + '/swaps/assign', {
+                    axios.post('/api/assign', {
                             uuid: window.uuid,
                             tx: result
                         })
