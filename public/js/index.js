@@ -12,7 +12,7 @@ function fetchData() {
             console.log(error);
         });
 
-    axios.get(`http://api.idena.io/api/Address/${global_variables.IDENA_WALLET}`)
+    axios.get(`https://api.idena.io/api/Address/${global_variables.IDENA_WALLET}`)
         .then(function (response) {
             document.getElementById("total-idena").innerHTML = Number(response.data.result.balance).toFixed(3) + " iDNA";
         })
