@@ -108,6 +108,7 @@ function fetchData() {
 }
 
 function submitTx() {
+    toastr.info("Submitting Tx..");
     axios.post('/api/assign', {
             uuid: window.uuid,
             tx: document.getElementById("modal-tx").value
@@ -120,11 +121,12 @@ function submitTx() {
 }
 
 function openIdenaApp() {
-    toastr.success("Openning Idena app");
+    toastr.info("Openning Idena app");
     let address = global_variables.IDENA_WALLET;
     let amount = window.amount;
     let bscAddress = window.address;
-    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}`
+    let callback_url = global_variables.BRIDGE_URL + "/api/assign?uuid=" + window.uuid;
+    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${callback_url}`
     console.log(url);
     window.open(url, '_blank');
 

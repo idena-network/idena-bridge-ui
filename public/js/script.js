@@ -14,7 +14,7 @@ toastr.options = {
 }
 
 var global_variables = {
-    "API_URL": "http://localhost:8000",
+    "BRIDGE_URL": "https://bridge.idena.io",
     "BSC_EXPLORER": "https://bscscan.com",
     "IDENA_EXPLORER": "https://scan.idena.io",
     "MIN_SWAP": 100,
