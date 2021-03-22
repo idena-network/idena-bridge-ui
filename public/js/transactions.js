@@ -22,8 +22,8 @@ function fetchData() {
                     newEntry += '<td><img src="/images/bsc.svg" style="height:20px;" class="mb-1 mr-2 ml-2"> <i class="fas fa-angle-right"></i> <img src="/images/idena.webp" style="height:20px;" class="mb-1 mr-2 ml-2"></td>';
                 }
                 newEntry += `<td>${element.address}</td>`;
-                newEntry += `<td>${element.amount}</td>`;
-                newEntry += `<td>${moment(element.time).local().format('YYYY.MM.DD hh:mm:ss A')}</td></tr>`;
+                newEntry += `<td>${parseFloat(element.amount).toFixed(6)} iDNAs</td>`;
+                newEntry += `<td>${moment(element.time).local().format('YYYY.MM.DD hh:mm A')}</td></tr>`;
                 document.getElementById("txs-table").innerHTML += newEntry;
             });
         })

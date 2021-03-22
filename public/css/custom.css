@@ -3,15 +3,23 @@
   font-size: 24px !important;
   font-weight: 700 !important;
   text-align: left !important;
-  color: #356332 !important;
+  color: #d0a02b !important;
 }
 
 .theme-color-1 {
   font-size: 18px !important;
   font-weight: 500 !important;
-  color: #356332 !important;
+  color: #d0a02b !important;
+  
 }
-
+.theme-color-2 {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #80765e !important;
+}
+.border-brown {
+  border-color: #d0a02b !important;
+}
 
 .swap-line::after {
   display: block;
@@ -20,7 +28,7 @@
   width: 100%;
   height: 4px;
   bottom: 0;
-  background: linear-gradient(269.98deg, #69fabc -0.02%, #356332 100%);
+  background: linear-gradient(269.98deg, #fff4db -0.02%, #d4a73a 100%);
 }
 
 .nunito {
