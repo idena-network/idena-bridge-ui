@@ -18,6 +18,9 @@ app.get("/transactions", function (req, res) {
 app.get("/operation/:uuid", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/operation.html'));
 });
+app.get("/submit", function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/submit.html'));
+});
 
 app.use("/css", express.static('public/css'));
 app.use("/images", express.static('public/images/'));

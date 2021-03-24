@@ -109,12 +109,9 @@ function fetchData() {
 
 function submitTx() {
     toastr.info("Submitting Tx..");
-    axios.get('/api/assign', {
-            params: {
-                uuid: window.uuid,
-                tx: document.getElementById("modal-tx").value,
-                no_redirect: true
-            }
+    axios.post('/api/assign', {
+            uuid: window.uuid,
+            tx: document.getElementById("modal-tx").value,
         })
         .then(function (response) {
             location.reload();
@@ -135,7 +132,7 @@ function openIdenaApp() {
 
 }
 async function calculateBSCFees() {
-    
+
     try {
         document.getElementById("card-fees").innerHTML = "Loading";
         let resp = await axios.get("/api/calculateFees/" + getLastItem(window.location.pathname));
@@ -171,12 +168,9 @@ async function openMetamask() {
                 if (await result) {
                     console.log(result);
                     toastr.success("Submitting Tx");
-                    axios.get('/api/assign', {
-                            params: {
-                                uuid: window.uuid,
-                                tx: result,
-                                no_redirect: true
-                            }
+                    axios.post('/api/assign', {
+                            uuid: window.uuid,
+                            tx: result
                         })
                         .then(function (response) {
                             if (response.status == 200) {
