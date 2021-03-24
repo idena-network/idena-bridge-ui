@@ -125,7 +125,7 @@ function openIdenaApp() {
     let address = global_variables.IDENA_WALLET;
     let amount = window.amount;
     let bscAddress = window.address;
-    let callback_url = global_variables.BRIDGE_URL + "/swaps/assign?uuid=" + window.uuid + "&redirect=true";
+    let callback_url = global_variables.BRIDGE_URL + "/submit?uuid=" + window.uuid;
     let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}`
     console.log(url);
     window.open(url, '_blank');
