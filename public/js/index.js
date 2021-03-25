@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateCardsLinks() {
     document.getElementById("bsc-link").href = global_variables.BSC_EXPLORER + "/token/" + global_variables.BSC_CONTRACT;
-    document.getElementById("idena-link").href = global_variables.IDENA_EXPLORER + "/address/ " + global_variables.IDENA_WALLET;
+    document.getElementById("idena-link").href = global_variables.IDENA_EXPLORER + "/address/" + global_variables.IDENA_WALLET;
 }
 
 function fetchData() {
