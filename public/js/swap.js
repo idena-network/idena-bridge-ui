@@ -16,7 +16,7 @@ function idenaToBsc() {
 }
 function createSwap() {
     if (!(parseFloat(document.getElementById("form-amount").value) >= global_variables.MIN_SWAP)) {
-        toastr.error(`Min swap is ${global_variables.MIN_SWAP} iDNAs`);
+        toastr.error(`Min swap is ${global_variables.MIN_SWAP} iDNA`);
         return
     }
     axios.post('/api/create', {
