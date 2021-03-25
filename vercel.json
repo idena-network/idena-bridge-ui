@@ -1,6 +1,9 @@
 {
     "routes": [
         { "src": "/operation/(.*)", "dest": "/operation.html" },
-        { "src": "/transactions", "dest": "/transactions.html" }
+        { "src": "/transactions", "dest": "/transactions.html" },
+        { "src": "/submit", "dest": "/submit.html" },
+        { "src": "/swap", "dest": "/swap.html" },
+        { "src": "/faq", "dest": "/faq.html" }
     ]
 }
