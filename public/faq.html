@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Idena Bridge</title>
+
+
+    <link href="/css/mdb.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/toastr.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/nunito.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-color:rgb(242, 243, 248);">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
+        <div class="container">
+            <a class="navbar-brand headerLeft" href="/">Idena Bridge</a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarRightAlignExample" aria-controls="navbarRightAlignExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+                <div class="navbar-nav ms-auto mb-2 mb-lg-0 m-2">
+                    <a class="nav-link active theme-color-1 h4  m-2" aria-current="page" href="/swap">Swap</a>
+                    <a class="nav-link theme-color-1 h4  m-2" href="/transactions">Transactions</a>
+                    <a class="nav-link theme-color-1 h4  m-2" href="/faq">Faq</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-5 pb-5 nunito">
+        <div class="row justify-content-center">
+            <div class="container py-3">
+                <div class="row">
+                    <div class="col-10 mx-auto">
+                        <div class="accordion" id="faqExample">
+                            <div class="card">
+                                <div class="card-header p-2" id="heading1">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse1" aria-expanded="false"
+                                            aria-controls="collapse1">
+                                            Q. What is Wrapped iDNA?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse1" class="collapse" aria-labelledby="heading1"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        A wrapped iDNA is a cryptocurrency token pegged to the value of the IDNA coin.
+                                        It’s called a wrapped because the original asset is put in a wrapper, a kind of
+                                        the digital vault that allows the wrapped version to be created on another
+                                        blockchain.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading2">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2" type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                            Q: How does the bridge work and who hosts it?
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapse2" class="collapse" aria-labelledby="heading2"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        The bridge uses a digital vault which holds iDNA coins on Idena blockchain and
+                                        issue wiDNA tokens pegged to iDNA 1:1 on Binance Smart Chain. The bridge is
+                                        hosted by Idena Core Team.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading3">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" style="text-transform: none;"
+                                            data-mdb-toggle="collapse" data-mdb-target="#collapse3"
+                                            aria-expanded="false" aria-controls="collapse3">
+                                            Q: Who is the owner of my idenas after wrapping?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse3" class="collapse" aria-labelledby="heading3"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        Bridge vault is the owner of your Idena coins. And you are the owner of Wrapped
+                                        Idena coins because coins are sent to your BSC address.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading4">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse4" aria-expanded="false"
+                                            aria-controls="collapse4">
+                                            Q. Where I can view a proof of assets?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse4" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        You can view reserves on <a
+                                            href="https://scan.idena.io/address/0x98D16d7021930b788135dD834983394fF2De9869">Idena
+                                            vualt</a> && <a
+                                            href="https://bscscan.com/token/0x0de08c1abe5fb86dd7fd2ac90400ace305138d5b">BSC
+                                            contract</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading5">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse5" aria-expanded="false"
+                                            aria-controls="collapse5">
+                                            Q. What can i do with my wrapped idenas?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse5" class="collapse" aria-labelledby="heading5"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        You can trade iDNA on any decentralized exchange on Binance Smart Chain (e.g.
+                                        Pancake Swap) or hold it on any wallet which supports BEP-20 token standard
+                                        (e.g. Trust Wallet)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading6">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse6" aria-expanded="false"
+                                            aria-controls="collapse6">
+                                            Q. Can i transfer coins directly from/to exchange?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse6" class="collapse" aria-labelledby="heading6"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        Currently, you can only wrap coins using the bridge by using the Idena Desktop
+                                        App.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse7" aria-expanded="false"
+                                            aria-controls="collapse7">
+                                            Q. How to create a BSC wallet?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse7" class="collapse" aria-labelledby="heading7"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        <p>
+                                            <b>Step 1: Install Metamask and create a Metamask account.</b><br>
+                                            Go to MetaMask.io and select from Android or iOS for mobile application and
+                                            select Chrome for desktop. You can also go directly to the Chrome store,
+                                            Google Play store.<br><br>
+
+
+                                            <b>Step 2: Connect Metamask to Binance Smart Chain</b><br>
+                                            Since Metamask was originally made for the Ethereum network. We need to make
+                                            few more steps to connect it to the Binance Smart Chain network.
+                                            You can use step by step guide provided on this link (use Mainnet parameters
+                                            from the guide):
+                                            https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain<br><br>
+
+                                            <b>Step 3: Import your Idena address (optional)</b><br>
+                                            Once you're done with steps 1 and 2 you are ready to go. Metamask provides
+                                            you with a new address that you can use on Binance Smart Chain.
+                                            Since Idena addresses are compatible with the Ethereum network and Binance
+                                            Smart Chain network. If you want, you can import your Idena address and use
+                                            it in Metamask.<br><br>
+                                            You can do it with few easy steps:<br>
+                                            <b>a:</b> Click on your account icon in the upper right corner.<br>
+                                            <b>b:</b> Click on "Import account".<br>
+                                            <b>c:</b> Enter your Idena private key (the one from the nodekey file) in
+                                            the text.<br>
+                                            field and click "Import"<br><br>
+                                            Now you have your Idena address that you can use with Metamask on both the
+                                            Binance Smart Chain network and Ethereum network.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading8">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse8" aria-expanded="false"
+                                            aria-controls="collapse8">
+                                            Q. Which wallets supports iDNA BEP20 ?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse8" class="collapse" aria-labelledby="heading8"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        MetaMask , TrustWallet ,SafePal And any wallet that supports BEP20 Tokens.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header p-2" id="heading9">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link theme-color-2 " type="button"
+                                            style="text-transform: none;" data-mdb-toggle="collapse"
+                                            data-mdb-target="#collapse9" aria-expanded="false"
+                                            aria-controls="collapse9">
+                                            Q. I dont see my wrapped iDNAs on BSC wallet?
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse9" class="collapse" aria-labelledby="heading9"
+                                    data-parent="#faqExample">
+                                    <div class="card-body">
+                                        Make sure the wallet supports BEP20 Tokens If yes then you can add the Token
+                                        address manually : 0x0de08c1abe5fb86dd7fd2ac90400ace305138d5b
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/lib/mdb.min.js"></script>
+        <script src="/lib/web3.min.js"></script>
+        <script src="/lib/jquery-3.5.1.min.js"></script>
+        <script src="/lib/axios.min.js" crossorigin="anonymous"></script>
+        <script src="/lib/toastr.min.js" crossorigin="anonymous"></script>
+        <script src="/lib/moment.js" crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/index.js"></script>
+</body>
+
+</html>

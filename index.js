@@ -6,12 +6,20 @@ const port = 3000
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
+app.get("/swap", function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/swap.html'));
+});
+app.get("/faq", function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/faq.html'));
+});
 app.get("/transactions", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/transactions.html'));
 });
-
 app.get("/operation/:uuid", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/operation.html'));
+});
+app.get("/submit", function (req, res) {
+  res.sendFile(path.join(__dirname + '/public/submit.html'));
 });
 
 app.use("/css", express.static('public/css'));

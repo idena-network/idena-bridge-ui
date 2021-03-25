@@ -46,7 +46,7 @@ function fetchData() {
                 document.getElementById("step1-title").innerHTML = "1. Send the required amount to the bridge's wallet";
                 document.getElementById("step2-title").innerHTML = "2. The bridge will mint tokens for your BSC address";
                 document.getElementById("action-button").onclick = openIdenaApp;
-                document.getElementById("action-button").innerHTML = "Open Idena App";
+                document.getElementById("action-button").innerHTML = "Send with idena App";
                 if (response.data.result.idena_tx) {
                     document.getElementById("step1-bottom").innerHTML = `TxHash : <a href="${global_variables.IDENA_EXPLORER + "/transaction/" + response.data.result.idena_tx}">${response.data.result.idena_tx.substring(0, 10)}...${response.data.result.idena_tx.substring(30, 42)}</a>`;
                     if (response.data.result.mined == 0) {
@@ -108,9 +108,10 @@ function fetchData() {
 }
 
 function submitTx() {
+    toastr.info("Submitting Tx..");
     axios.post('/api/assign', {
             uuid: window.uuid,
-            tx: document.getElementById("modal-tx").value
+            tx: document.getElementById("modal-tx").value,
         })
         .then(function (response) {
             location.reload();
@@ -120,26 +121,27 @@ function submitTx() {
 }
 
 function openIdenaApp() {
-    toastr.success("Openning Idena app");
+    toastr.info("Openning Idena app");
     let address = global_variables.IDENA_WALLET;
     let amount = window.amount;
     let bscAddress = window.address;
-    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}`
+    let callback_url = global_variables.BRIDGE_URL + "/submit?uuid=" + window.uuid;
+    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}`
     console.log(url);
     window.open(url, '_blank');
 
 }
 async function calculateBSCFees() {
+
     try {
-        var web3API = new Web3(window.ethereum);
-        contract = new web3API.eth.Contract(contractABI, global_variables.BSC_CONTRACT);
-        let contractFees = await contract.methods.customBurn(web3API.utils.toWei(window.amount.toString()), window.address).estimateGas({
-            from: window.address
-        });
-        let gasPrice = await web3API.eth.getGasPrice();
-        let idenaPrice = web3API.utils.toWei(await getIdenaPrice());
-        let fees = (gasPrice * contractFees / idenaPrice);
-        document.getElementById("card-fees").innerHTML = '~' + (parseFloat(fees) * (parseFloat(global_variables.BSC_FEES) / 100)).toFixed(3) + " iDNA" || "-";
+        document.getElementById("card-fees").innerHTML = "Loading";
+        let resp = await axios.get("/api/calculateFees/" + getLastItem(window.location.pathname));
+        if (resp.status == 200 && resp.data.result) {
+            document.getElementById("card-fees").innerHTML = '~' + parseFloat(resp.data.result).toFixed(2) + " iDNAs";
+            return resp.data.result;
+        } else {
+            document.getElementById("card-fees").innerHTML = "Error";
+        }
     } catch (error) {
         document.getElementById("card-fees").innerHTML = "Error";
         console.error(error);
