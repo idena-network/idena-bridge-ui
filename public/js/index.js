@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 function updateCardsLinks() {
-    document.getElementById("bsc-link").href = "https://bscscan.com/token/" + global_variables.BSC_CONTRACT;
-    document.getElementById("idena-link").href = "https://scan.idena.io/address/" + global_variables.IDENA_WALLET;
+    document.getElementById("bsc-link").href = global_variables.BSC_EXPLORER + global_variables.BSC_CONTRACT;
+    document.getElementById("idena-link").href = global_variables.IDENA_EXPLORER + global_variables.IDENA_WALLET;
 }
 
 function fetchData() {
