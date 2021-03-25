@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+    updateCardsLinks();
     fetchData();
 }, false);
 
+function updateCardsLinks() {
+    document.getElementById("bsc-link").href = global_variables.BSC_EXPLORER + "/token/" + global_variables.BSC_CONTRACT;
+    document.getElementById("idena-link").href = global_variables.IDENA_EXPLORER + "/address/" + global_variables.IDENA_WALLET;
+}
 
 function fetchData() {
     axios.get(`https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${global_variables.BSC_CONTRACT}`)
