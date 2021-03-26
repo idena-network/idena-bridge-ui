@@ -12,9 +12,9 @@ function fetchData() {
                 if (element.status == "Success") {
                     newEntry += `<td><span class="badge bg-success">Success</span></td>`;
                 } else if (element.status == "Pending") {
-                    newEntry += `<td><span class="badge bg-warning">Pending</span></td>`;
+                    newEntry += `<td><span class="badge bg-warning">Waiting for payment</span></td>`;
                 } else if (element.status == "Fail") {
-                    newEntry += `<td><span class="badge bg-danger">Fail</span></td>`;
+                    newEntry += `<td><span class="badge bg-danger">Canceled by user</span></td>`;
                 }
                 if (element.type == 0) {
                     newEntry += '<td> <img src="/images/idena.webp" style="height:20px;" class="mb-1 mr-2 ml-2"> <i class="fas fa-angle-right"> </i> <img src="/images/bsc.svg" style="height:20px;" class="mb-1 mr-2 ml-2"></td>';
