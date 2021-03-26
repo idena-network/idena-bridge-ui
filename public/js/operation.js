@@ -137,7 +137,7 @@ async function calculateBSCFees() {
         document.getElementById("card-fees").innerHTML = "Loading";
         let resp = await axios.get("/api/calculateFees/" + getLastItem(window.location.pathname));
         if (resp.status == 200 && resp.data.result) {
-            document.getElementById("card-fees").innerHTML = '~' + parseFloat(resp.data.result).toFixed(2) + " iDNAs";
+            document.getElementById("card-fees").innerHTML = '~' + parseFloat(resp.data.result).toFixed(2) + " iDNA";
             return resp.data.result;
         } else {
             document.getElementById("card-fees").innerHTML = "Error";
