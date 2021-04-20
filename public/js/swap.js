@@ -4,6 +4,7 @@ function bscToIdenaUI() {
     document.getElementById("card-0").classList.remove("swap-line");
     document.getElementById("card-1").classList.add("swap-line");
     document.getElementById("form-type").value = 1;
+    document.getElementById("form-to-text").innerHTML = "Your idena wallet address";
     document.getElementById("form-title").innerHTML = "Swap BEP20 iDNA to iDNA";
 }
 function idenaToBsc() {
@@ -12,6 +13,7 @@ function idenaToBsc() {
     document.getElementById("card-0").classList.add("swap-line");
     document.getElementById("card-1").classList.remove("swap-line");
     document.getElementById("form-type").value = 0;
+    document.getElementById("form-to-text").innerHTML = "Your BSC wallet address (e.g. Metamask)";
     document.getElementById("form-title").innerHTML = "Swap iDNA to BEP20 iDNA";
 }
 function createSwap() {
