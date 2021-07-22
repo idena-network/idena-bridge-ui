@@ -9,7 +9,7 @@ function updateCardsLinks() {
 }
 
 function fetchData() {
-    axios.get(`https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${global_variables.BSC_CONTRACT}`)
+    axios.get("/api/tokensupply")
         .then(function (response) {
             document.getElementById("total-bsc").innerHTML = (Number(response.data.result) / 1000000000000000000).toFixed(3) + " iDNA";
         })
