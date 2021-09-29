@@ -122,12 +122,11 @@ function submitTx() {
 
 function openIdenaApp() {
     toastr.info("Openning Idena app");
-    let address = global_variables.IDENA_WALLET;
-    let amount = window.amount;
-    let bscAddress = window.address;
-    let callback_url = global_variables.BRIDGE_URL + "/submit?uuid=" + window.uuid;
-    let url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}`
-    console.log(url);
+    const address = global_variables.IDENA_WALLET;
+    const amount = window.amount;
+    const bscAddress = window.address;
+    const callback_url = global_variables.BRIDGE_URL + "/api/submit?uuid=" + window.uuid;
+    const url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}&callback_format=json`
     window.open(url, '_blank');
 
 }
