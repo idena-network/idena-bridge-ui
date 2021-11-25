@@ -125,11 +125,8 @@ function openIdenaApp() {
     const address = global_variables.IDENA_WALLET;
     const amount = window.amount;
     const bscAddress = window.address;
-    // todo
-    // const callback_url = global_variables.BRIDGE_URL + "/api/submit?uuid=" + window.uuid;
-    // const url = `https://app.idena.io/dna/send?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}&callback_format=json`
-    const callback_url = "https://idena-bridge-ui-git-dna-send-idena.vercel.app" + "/api/submit?uuid=" + window.uuid;
-    const url = `https://idena-web-git-send-dna-when-empty-cb-url-idena.vercel.app/dna/send?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}&callback_format=json`
+    const callback_url = global_variables.BRIDGE_URL + "/api/submit?uuid=" + window.uuid;
+    const url = `https://app.idena.io/dna/send?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}&callback_format=json`
     window.open(url, '_blank');
 
 }
