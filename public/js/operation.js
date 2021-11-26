@@ -126,7 +126,7 @@ function openIdenaApp() {
     const amount = window.amount;
     const bscAddress = window.address;
     const callback_url = global_variables.BRIDGE_URL + "/api/submit?uuid=" + window.uuid;
-    const url = `dna://send/v1?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}&callback_format=json`
+    const url = `https://app.idena.io/dna/send?address=${address}&amount=${amount}&comment=BSCADDRESS${bscAddress}&callback_url=${encodeURI(callback_url)}&callback_format=json`
     window.open(url, '_blank');
 
 }

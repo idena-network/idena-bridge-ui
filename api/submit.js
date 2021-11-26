@@ -33,6 +33,8 @@ export default createProxyMiddleware({
         proxyReq.end()
     },
     onProxyRes: function (proxyRes, req, res) {
+        proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+        proxyRes.headers['Access-Control-Allow-Headers'] = 'Content-Type';
         if (!isJson(req)) {
             return
         }
